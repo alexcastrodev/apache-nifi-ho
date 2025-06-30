@@ -1,0 +1,9 @@
+services:
+  nifi:
+    image: apache/nifi:latest
+    container_name: nifi
+    ports:
+      - "8443:8443"
+    volumes:
+      - certs/localhost:/opt/certs
+    env_file: .env 
