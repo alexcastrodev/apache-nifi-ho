@@ -5,5 +5,5 @@ services:
     ports:
       - "8443:8443"
     volumes:
-      - certs/localhost:/opt/certs
+      - ./certs/localhost:/opt/certs
     env_file: .env 
