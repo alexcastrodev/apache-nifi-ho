@@ -12,6 +12,10 @@ services:
       - "./nifi/flowfile:/opt/nifi/nifi-current/flowfile_repository"
       - "./nifi/content:/opt/nifi/nifi-current/content_repository"
       - "./nifi/provenance:/opt/nifi/nifi-current/provenance_repository"
+      # Tem que copiar isso primeiro
+      #- ./nifi/conf:/opt/nifi/nifi-current/conf
+      # For logs
+      # - ./nifi/logs:/opt/nifi/nifi-current/logs
     deploy:
       resources:
         limits:
@@ -22,5 +26,4 @@ services:
           cpus: '1'
     tmpfs:
       - /tmp:size=1G
-
     env_file: .env 
