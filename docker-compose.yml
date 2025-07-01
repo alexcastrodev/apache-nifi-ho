@@ -6,4 +6,21 @@ services:
       - "8443:8443"
     volumes:
       - ./certs/localhost:/opt/certs
+      - "./nifi/data:/data"
+      - "./nifi/state:/opt/nifi/nifi-current/state"
+      - "./nifi/database:/opt/nifi/nifi-current/database_repository"
+      - "./nifi/flowfile:/opt/nifi/nifi-current/flowfile_repository"
+      - "./nifi/content:/opt/nifi/nifi-current/content_repository"
+      - "./nifi/provenance:/opt/nifi/nifi-current/provenance_repository"
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '2'
+        reservations:
+          memory: 512M
+          cpus: '1'
+    tmpfs:
+      - /tmp:size=1G
+
     env_file: .env 
